@@ -2,5 +2,9 @@ version: '3'
 services:
  libamtrack:
   container_name: "libamtrack"
-  build: .
+  build:
+   context: .
+   args:
+    - repoUrl=https://github.com/libamtrack/library.git
+    - branch=forjs
   command: tail -f /dev/null
