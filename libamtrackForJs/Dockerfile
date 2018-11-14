@@ -14,6 +14,8 @@ RUN apt-get update \
 &&  apt-get install -y git \ 
 &&  apt-get install -y wget
 
+# using clean source files of GSL to compile it to JavaScript
+# instead of debian debian source package
 RUN wget "https://ftp.gnu.org/gnu/gsl/gsl-latest.tar.gz" \
 &&  mkdir /gsl-latest \
 &&  tar -xzvf gsl-latest.tar.gz -C /gsl-latest \

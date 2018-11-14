@@ -1,7 +1,7 @@
 sudo: required #is required to use docker service in travis
 services:
   - docker # required, but travis uses older version of docker :
-after_success:
+install:
   - cd libamtrackForJs
   - docker --version  # document the version travis is using
   - docker-compose build
