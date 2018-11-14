@@ -10,3 +10,5 @@ install:
   - docker-compose build
 # - if build form other branch or from fork changes params below and use it or in docker-compose.yml
 # - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs .
+script:
+- echo "skipping tests"
