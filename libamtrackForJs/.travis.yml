@@ -1,5 +1,5 @@
 sudo: required #is required to use docker service in travis
-language: nodejs
+language: node_js
 services:
   - docker # required, but travis uses older version of docker :
 install:
