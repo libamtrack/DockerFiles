@@ -4,11 +4,9 @@ node_js:
   - "7"
 services:
   - docker # required, but travis uses older version of docker :
-install:
-  - cd libamtrackForJs
-  - docker --version  # document the version travis is using
-  - docker-compose build
+before_script:
+  - docker --version
+script:
+- docker-compose build
 # - if build form other branch or from fork changes params below and use it or in docker-compose.yml
 # - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs .
-script:
-- echo "skipping tests"
