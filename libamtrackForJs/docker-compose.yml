@@ -7,4 +7,5 @@ services:
    args:
     - repoUrl=https://github.com/libamtrack/library.git
     - branch=forjs
+    - WASM=1
   command: tail -f /dev/null
