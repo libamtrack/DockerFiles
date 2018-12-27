@@ -1,3 +1,2 @@
 #!/bin/bash
-echo "$repoUrl"
-#docker build --build-arg repoUrl=$repoUrl --build-arg branch=$branch --build-arg WASM=$WASM .
+docker build --build-arg repoUrl=$repoUrl --build-arg branch=$branch --build-arg WASM=$WASM .
