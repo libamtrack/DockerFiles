@@ -24,7 +24,7 @@ script:
   - docker cp libamtrack:/libat.js .
   - sudo cp libat.js /compiled/libatwithoutwasm.js
 
-on_success:
+after_success:
   # push new versions of compiled libraries
   - cd /
   - git clone https://github.com/libamtrack/web.git
