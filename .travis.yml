@@ -44,3 +44,10 @@ after_success:
   - sudo git add -A
   - sudo git commit -m "Update compiled library"
   - sudo git push "https://marwin1991:$GH_TOKEN@github.com/libamtrack/web.git"
+
+
+  # install hub tool and create pull request in web repo
+  - cd /
+  - sudo wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-arm64-2.7.0.tgz
+  - sudo tar -xzf hub-linux-arm64-2.7.0.tgz -C /hub
+  - ls /hub 
