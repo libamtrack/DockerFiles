@@ -27,19 +27,19 @@ script:
 after_success:
   # push new versions of compiled libraries
   - cd /
-  - git clone https://github.com/libamtrack/web.git
+  - sudo git clone https://github.com/libamtrack/web.git
   - cd /web
   - current_date_time="`date "+%Y%m%d_%H%M%S"`"
   - git checkout -b "feature/compiled_lib/$current_date_time"
 
-  - rm -f /web/src/libat.wasm
-  - cp /compiled/libat.wasm /web/src/libat.wasm
+  - sudo rm -f /web/src/libat.wasm
+  - sudo cp /compiled/libat.wasm /web/src/libat.wasm
 
-  - rm -f /web/src/static/js/libat.js
-  - cp /compiled/libat.js /web/src/static/js/libat.js
+  - sudo rm -f /web/src/static/js/libat.js
+  - sudo cp /compiled/libat.js /web/src/static/js/libat.js
 
-  - rm -f /web/src/static/js/libatwithoutwasm.js
-  - cp /compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
+  - sudo rm -f /web/src/static/js/libatwithoutwasm.js
+  - sudo cp /compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
 
   - git add -A
   - git commit -m "Update compiled library"
