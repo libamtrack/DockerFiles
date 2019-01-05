@@ -13,8 +13,8 @@ script:
   # compile with WASM support
   - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs --build-arg WASM=1 -t libamtrack/libamtrackforjs:latest .
   - docker run -itd --name libamtrack libamtrack/libamtrackforjs
-  - docker cp libamtrack:/libat.js /compiled
-  - docker cp libamtrack:/libat.wasm /compiled
+  - sudo docker cp libamtrack:/libat.js /compiled
+  - sudo docker cp libamtrack:/libat.wasm /compiled
   - docker container rm -f libamtrack
   - docker image rm -f libamtrackforjs_libamtrack
 
@@ -22,7 +22,7 @@ script:
   - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs --build-arg WASM=0 -t libamtrack/libamtrackforjs:latest .
   - docker run -itd --name libamtrack libamtrack/libamtrackforjs
   - docker cp libamtrack:/libat.js .
-  - cp libat.js /compiled/libatwithoutwasm.js
+  - sudo cp libat.js /compiled/libatwithoutwasm.js
 
 on_success:
   # push new versions of compiled libraries
