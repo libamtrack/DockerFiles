@@ -49,5 +49,4 @@ after_success:
   # install hub tool and create pull request in web repo
   - cd /
   - sudo wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-arm64-2.7.0.tgz
-  - sudo tar -xzf hub-linux-arm64-2.7.0.tgz -C /hub
-  - ls /hub 
+  - sudo tar -xzf hub-linux-arm64-2.7.0.tgz
