@@ -7,7 +7,7 @@ services:
 before_script:
   - docker --version
 script:
-  - mkdir /compiled # directory to store compiled library
+  - sudo mkdir /compiled # directory to store compiled library
   - cd libamtrackForJs
 
   # compile with WASM support
