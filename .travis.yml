@@ -50,3 +50,8 @@ after_success:
   - cd /
   - sudo wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-arm64-2.7.0.tgz
   - sudo tar -xzf hub-linux-arm64-2.7.0.tgz
+  - GITHUB_TOKEN="$GH_TOKEN"
+  - GITHUB_USER=marwin1991
+  - chmod +x /hub-linux-arm64-2.7.0/bin/hub
+  - cd /web
+  - /hub-linux-arm64-2.7.0/bin/./hub pull-request -m "New verions of compiled libamtrack library to JavaScipr with and witout WebAssembly"
