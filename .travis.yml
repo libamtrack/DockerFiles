@@ -17,6 +17,8 @@ script:
   - sudo docker cp libamtrack:/libat.wasm /compiled
   - docker container rm -f libamtrack
   - docker image rm -f libamtrackforjs_libamtrack
+  - sudo rm -f libat.js
+  - sudo rm -f libat.wasm
 
   # compile without WASM support
   - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs --build-arg WASM=0 -t libamtrack/libamtrackforjs:latest .
@@ -24,34 +26,8 @@ script:
   - docker cp libamtrack:/libat.js .
   - sudo cp libat.js /compiled/libatwithoutwasm.js
 
-after_success:
-  # push new versions of compiled libraries
-  - cd /
-  - sudo git clone https://github.com/libamtrack/web.git
-  - cd /web
-  - current_date_time="`date "+%Y%m%d_%H%M%S"`"
-  - sudo git checkout -b "feature/compiled_lib/$current_date_time"
-
-  - sudo rm -f /web/src/libat.wasm
-  - sudo cp /compiled/libat.wasm /web/src/libat.wasm
-
-  - sudo rm -f /web/src/static/js/libat.js
-  - sudo cp /compiled/libat.js /web/src/static/js/libat.js
-
-  - sudo rm -f /web/src/static/js/libatwithoutwasm.js
-  - sudo cp /compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
-
-  - sudo git add -A
-  - sudo git commit -m "Update compiled library"
-  - sudo git push "https://marwin1991:$GH_TOKEN@github.com/libamtrack/web.git"
-
-
-  # install hub tool and create pull request in web repo
-  - cd /
-  - sudo wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz
-  - sudo tar -xzf hub-linux-amd64-2.7.0.tgz
-  - export GITHUB_TOKEN="$GH_TOKEN"
-  - chmod +x /hub-linux-amd64-2.7.0/bin/hub
-  - cd /web
-  - ls /hub-linux-amd64-2.7.0/bin/
-  - /hub-linux-amd64-2.7.0/bin/./hub pull-request -m "New verions of compiled libamtrack library to JavaScipr with and witout WebAssembly"
+deploy:
+  provider: script
+  script: bash webRepo.sh # push new version of compiled libraries
+  on:
+    branch: master
