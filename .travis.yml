@@ -51,7 +51,6 @@ after_success:
   - sudo wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz
   - sudo tar -xzf hub-linux-amd64-2.7.0.tgz
   - GITHUB_TOKEN="$GH_TOKEN"
-  - GITHUB_USER=marwin1991
   - chmod +x /hub-linux-amd64-2.7.0/bin/hub
   - cd /web
   - ls /hub-linux-amd64-2.7.0/bin/
