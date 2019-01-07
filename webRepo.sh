@@ -9,18 +9,21 @@
   git checkout -b "feature/compiled_lib/$current_date_time"
 
   rm -f /web/src/libat.wasm
-  cp /compiled/libat.wasm /web/src/libat.wasm
+  cp $HOME/compiled/libat.wasm /web/src/libat.wasm
 
   rm -f /web/src/static/js/libat.wasm 2>/dev/null || :
-  cp /compiled/libat.wasm /web/src/static/js/libat.wasm
+  cp $HOME/compiled/libat.wasm /web/src/static/js/libat.wasm
 
   rm -f /web/src/static/js/libat.js
-  cp /compiled/libat.js /web/src/static/js/libat.js
+  cp $HOME/compiled/libat.js /web/src/static/js/libat.js
 
   rm -f /web/src/static/js/libatwithoutwasm.js
-  cp /compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
+  cp $HOME/compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
 
-  git add -A
+  git add /web/src/libat.wasm
+  git add /web/src/static/js/libat.wasm
+  git add /web/src/static/js/libat.js
+  git add /web/src/static/js/libatwithoutwasm.js
   git commit -m "Update compiled library"
   git push "https://marwin1991:$GH_TOKEN@github.com/libamtrack/web.git"
 
