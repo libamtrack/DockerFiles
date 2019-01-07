@@ -20,10 +20,10 @@
   rm -f /web/src/static/js/libatwithoutwasm.js
   cp $HOME/compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
 
-  git add /web/src/libat.wasm
-  git add /web/src/static/js/libat.wasm
-  git add /web/src/static/js/libat.js
-  git add /web/src/static/js/libatwithoutwasm.js
+  git add /src/libat.wasm
+  git add /src/static/js/libat.wasm
+  git add /src/static/js/libat.js
+  git add /src/static/js/libatwithoutwasm.js
   git commit -m "Update compiled library"
   git push "https://marwin1991:$GH_TOKEN@github.com/libamtrack/web.git"
 
