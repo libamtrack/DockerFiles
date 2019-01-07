@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $TRAVIS_BRANCH == 'master' ]; then
+#if [ $TRAVIS_BRANCH == 'master' ]; then
   # push new versions of compiled libraries
   cd /
   git clone https://github.com/libamtrack/web.git
@@ -36,4 +36,4 @@ if [ $TRAVIS_BRANCH == 'master' ]; then
   chmod +x /hub-linux-amd64-2.7.0/bin/hub
   cd /web
   /hub-linux-amd64-2.7.0/bin/./hub pull-request -m "New versions of compiled libamtrack library to JavaScript with and without WebAssembly"
-fi
+#fi
