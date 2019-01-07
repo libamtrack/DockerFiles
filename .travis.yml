@@ -29,5 +29,5 @@ script:
 deploy:
   provider: script
   script: bash webRepo.sh # push new version of compiled libraries
-  #on:
-  #  branch: master
+  on:
+    branch: commit-lib # to test
