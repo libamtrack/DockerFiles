@@ -28,6 +28,7 @@ script:
 
 deploy:
   provider: script
+  skip_cleanup: true
   script: bash webRepo.sh # push new version of compiled libraries
   on:
     branch: commit-lib # to test
