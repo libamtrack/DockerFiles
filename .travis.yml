@@ -25,10 +25,11 @@ script:
   - docker run -itd --name libamtrack libamtrack/libamtrackforjs
   - docker cp libamtrack:/libat.js .
   - cp libat.js $HOME/compiled/libatwithoutwasm.js
+  - rm -f libat.js
 
 deploy:
   provider: script
   skip_cleanup: true
-  script: ls # push new version of compiled libraries
+  script: bash webRepo.sh # push new version of compiled libraries
   on:
     branch: commit-lib # to test
