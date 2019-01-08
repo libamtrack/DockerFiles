@@ -32,7 +32,6 @@
   cd /
   wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz
   tar -xzf hub-linux-amd64-2.7.0.tgz
-  export GITHUB_TOKEN="$GH_TOKEN"
   chmod +x /hub-linux-amd64-2.7.0/bin/hub
   cd /web
   /hub-linux-amd64-2.7.0/bin/./hub pull-request -m "New versions of compiled libamtrack library to JavaScript with and without WebAssembly"
