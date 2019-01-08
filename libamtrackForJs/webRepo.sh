@@ -2,23 +2,23 @@
 
 #if [ $TRAVIS_BRANCH == 'master' ]; then
   # push new versions of compiled libraries
-  cd /
+  cd $TEMP
   git clone https://github.com/libamtrack/web.git
-  cd /web
+  cd $TEMP/web
   current_date_time="`date "+%Y%m%d_%H%M%S"`"
   git checkout -b "feature/compiled_lib/$current_date_time"
 
-  rm -f /web/src/libat.wasm
-  cp $HOME/compiled/libat.wasm /web/src/libat.wasm
+  rm -f $TEMP/web/src/libat.wasm
+  cp $HOME/compiled/libat.wasm $TEMP/web/src/libat.wasm
 
-  rm -f /web/src/static/js/libat.wasm 2>/dev/null || :
-  cp $HOME/compiled/libat.wasm /web/src/static/js/libat.wasm
+  rm -f $TEMP/web/src/static/js/libat.wasm 2>/dev/null || :
+  cp $HOME/compiled/libat.wasm $TEMP/web/src/static/js/libat.wasm
 
-  rm -f /web/src/static/js/libat.js
-  cp $HOME/compiled/libat.js /web/src/static/js/libat.js
+  rm -f $TEMP/web/src/static/js/libat.js
+  cp $HOME/compiled/libat.js $TEMP/web/src/static/js/libat.js
 
-  rm -f /web/src/static/js/libatwithoutwasm.js
-  cp $HOME/compiled/libatwithoutwasm.js /web/src/static/js/libatwithoutwasm.js
+  rm -f $TEMP/web/src/static/js/libatwithoutwasm.js
+  cp $HOME/compiled/libatwithoutwasm.js $TEMP/web/src/static/js/libatwithoutwasm.js
 
   git add /src/libat.wasm
   git add /src/static/js/libat.wasm
@@ -29,10 +29,10 @@
 
 
   # install hub tool and create pull request in web repo
-  cd /
+  cd $TEMP
   wget https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz
   tar -xzf hub-linux-amd64-2.7.0.tgz
-  chmod +x /hub-linux-amd64-2.7.0/bin/hub
-  cd /web
-  /hub-linux-amd64-2.7.0/bin/./hub pull-request -m "New versions of compiled libamtrack library to JavaScript with and without WebAssembly"
+  chmod +x $TEMP/hub-linux-amd64-2.7.0/bin/hub
+  cd $TEMP/web
+  $TEMP/hub-linux-amd64-2.7.0/bin/./hub pull-request -m "New versions of compiled libamtrack library to JavaScript with and without WebAssembly"
 #fi
