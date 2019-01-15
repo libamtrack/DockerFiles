@@ -7,7 +7,29 @@ services:
 before_script:
   - docker --version
 script:
+  - mkdir $HOME/compiled # directory to store compiled library
   - cd libamtrackForJs
-  - docker-compose build
-# - if build form other branch or from fork changes params below and use it or in docker-compose.yml
-# - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs .
+
+  # compile with WASM support
+  - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs --build-arg WASM=1 -t libamtrack/libamtrackforjs:latest .
+  - docker run -itd --name libamtrack libamtrack/libamtrackforjs
+  - docker cp libamtrack:/libat.js $HOME/compiled
+  - docker cp libamtrack:/libat.wasm $HOME/compiled
+  - docker container rm -f libamtrack
+  - docker image rm -f libamtrackforjs_libamtrack
+  - rm -f libat.js
+  - rm -f libat.wasm
+
+  # compile without WASM support
+  - docker build --build-arg repoUrl=https://github.com/libamtrack/library.git --build-arg branch=forjs --build-arg WASM=0 -t libamtrack/libamtrackforjs:latest .
+  - docker run -itd --name libamtrack libamtrack/libamtrackforjs
+  - docker cp libamtrack:/libat.js .
+  - cp libat.js $HOME/compiled/libatwithoutwasm.js
+  - rm -f libat.js
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash webRepo.sh # push new version of compiled libraries
+  on:
+    branch: master
