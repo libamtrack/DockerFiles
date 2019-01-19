@@ -26,7 +26,7 @@ RUN cd $GSL_PATH \
 &&  rm -r $GSL_PATH/gsl-latest.tar.gz \
 &&  cd $GSL_PATH/gsl-latest/gsl/ \
 &&  /bin/bash -c "emconfigure ./configure" \
-&&  /bin/bash -c "emmake make"
+&&  /bin/bash -c "emmake make -j2"
 
 ARG repoUrl
 ARG branch
