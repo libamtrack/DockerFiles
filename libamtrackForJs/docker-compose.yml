@@ -6,6 +6,6 @@ services:
    context: .
    args:
     - repoUrl=https://github.com/libamtrack/library.git
-    - branch=forjs
+    - branch=feature/forjs-fortran-cleaning
     - WASM=1
   command: tail -f /dev/null
