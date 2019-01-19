@@ -30,7 +30,7 @@ RUN cd $GSL_PATH \
 &&  rm -r $GSL_PATH/gsl-latest.tar.gz \
 &&  cd $GSL_PATH/gsl-latest/gsl/ \
 &&  /bin/bash -c "emconfigure ./configure --prefix=$PWD/usr" \
-&&  /bin/bash -c "emmake make -j2"
+&&  /bin/bash -c "emmake make -j2" \
 &&  /bin/bash -c "emmake make install"
 
 ARG repoUrl
