@@ -1,7 +1,7 @@
 sudo: required #is required to use docker service in travis
 language: node_js
 node_js:
-  - "7"
+  - "7"  # TODO - why version  7 ?
 services:
   - docker # required, but travis uses older version of docker :
 before_script:
@@ -31,6 +31,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script: bash webRepo.sh # push new version of compiled libraries
+  on:
+     all_branches: true
 # disabling just for test
-#  on:
 #    branch: master
