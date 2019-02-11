@@ -23,7 +23,7 @@ RUN mkdir -p $GSL_PATH
 # instead of debian source package
 
 RUN cd $GSL_PATH \
-&&  wget -q "https://ftp.gnu.org/gnu/gsl/gsl-latest.tar.gz" \
+&&  wget -q "http://ftpmirror.gnu.org/gnu/gsl/gsl-latest.tar.gz" \
 &&  mkdir $GSL_PATH/gsl-latest \
 &&  tar -xzf gsl-latest.tar.gz -C $GSL_PATH/gsl-latest \
 &&  mv $GSL_PATH/gsl-latest/** $GSL_PATH/gsl-latest/gsl \
