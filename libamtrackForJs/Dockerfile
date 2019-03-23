@@ -3,7 +3,7 @@
 # Dockerfile at: https://github.com/trzecieu/emscripten-docker/blob/master/docker/trzeci/emscripten/Dockerfile
 # 'trzeci/emscripten' image is advised by Emscripten's creators
 # https://kripken.github.io/emscripten-site/docs/compiling/Travis.html
-ARG EMSCRIPTEN_SDK=sdk-tag-1.38.21-64bit
+ARG EMSCRIPTEN_SDK=sdk-tag-1.38.29-64bit
 FROM trzeci/emscripten:${EMSCRIPTEN_SDK}
 
 RUN apt-get update \
@@ -21,7 +21,6 @@ RUN mkdir -p $GSL_PATH
 
 # using clean source files of GSL to compile it to JavaScript
 # instead of debian source package
-
 RUN cd $GSL_PATH \
 &&  wget -q "http://ftpmirror.gnu.org/gnu/gsl/gsl-latest.tar.gz" \
 &&  mkdir $GSL_PATH/gsl-latest \
@@ -40,6 +39,7 @@ ARG WASM
 WORKDIR /
 RUN git clone -b $branch $repoUrl 
 RUN cp ${GSL_ROOT_DIR}/lib/libgsl.a /library/distributions/JavaScript/
+RUN cp ${GSL_ROOT_DIR}/lib/libgslcblas.a /library/distributions/JavaScript/
 
 WORKDIR /library/distributions/JavaScript/
 RUN /bin/bash -c "./compile_to_js.sh $WASM"
