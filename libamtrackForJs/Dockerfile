@@ -3,7 +3,7 @@
 # Dockerfile at: https://github.com/trzecieu/emscripten-docker/blob/master/docker/trzeci/emscripten/Dockerfile
 # 'trzeci/emscripten' image is advised by Emscripten's creators
 # https://kripken.github.io/emscripten-site/docs/compiling/Travis.html
-ARG EMSCRIPTEN_SDK=latest
+ARG EMSCRIPTEN_SDK=1.39.15-upstream 
 FROM trzeci/emscripten:${EMSCRIPTEN_SDK}
 
 RUN apt-get update \
