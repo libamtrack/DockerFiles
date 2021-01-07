@@ -3,7 +3,7 @@
 # Dockerfile at: https://github.com/trzecieu/emscripten-docker/blob/master/docker/trzeci/emscripten/Dockerfile
 # 'trzeci/emscripten' image is advised by Emscripten's creators
 # https://kripken.github.io/emscripten-site/docs/compiling/Travis.html
-ARG EMSCRIPTEN_SDK=1.39.15-upstream 
+ARG EMSCRIPTEN_SDK=1.39.16-upstream 
 FROM trzeci/emscripten:${EMSCRIPTEN_SDK}
 
 RUN apt-get update \
@@ -28,7 +28,7 @@ RUN cd $GSL_PATH \
 &&  mv $GSL_PATH/gsl-latest/** $GSL_PATH/gsl-latest/gsl \
 &&  rm -r $GSL_PATH/gsl-latest.tar.gz \
 &&  cd $GSL_PATH/gsl-latest/gsl/ \
-&&  /bin/bash -c "emconfigure ./configure --prefix=$PWD/usr" \
+&&  /bin/bash -c "emconfigure ./configure --disable-shared --prefix=$PWD/usr" \
 &&  /bin/bash -c "emmake make -j2" \
 &&  /bin/bash -c "emmake make install"
 
