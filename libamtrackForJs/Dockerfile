@@ -2,8 +2,9 @@
 # Dockerhub link: https://hub.docker.com/r/trzeci/emscripten/
 # Dockerfile at: https://github.com/trzecieu/emscripten-docker/blob/master/docker/trzeci/emscripten/Dockerfile
 # https://kripken.github.io/emscripten-site/docs/compiling/Travis.html
-ARG EMSCRIPTEN_SDK=1.39.16-upstream 
-FROM trzeci/emscripten:${EMSCRIPTEN_SDK}
+#ARG EMSCRIPTEN_SDK=1.39.16-upstream 
+#FROM trzeci/emscripten:${EMSCRIPTEN_SDK}
+FROM emscripten/emsdk
 
 RUN apt-get update \
 &&  apt-get install -y git \ 
